@@ -8,11 +8,11 @@ public class Data : ScriptableObject
 
 #if UNITY_EDITOR
 	[Multiline]
-	public string DeveloperNotes;
+	public string DeveloperNotes; //Developer notes to see in the inspector in case its needed
 #endif
 
 	[SerializeField]
-	public List<TournamentData> tournamentDatas; 
+	public List<TournamentData> tournamentDatas; //tournaments
 
 
 }

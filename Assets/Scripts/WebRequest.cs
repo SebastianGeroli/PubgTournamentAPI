@@ -4,10 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
+/// <summary>
+/// Class wich is responsible for handling Web Requests
+/// </summary>
 public static class WebRequest
 {
-
-	public static Data Data;
+	/// <summary>
+	/// Request All Tournaments in the api
+	/// </summary>
+	/// <param name="callback">is called when the request is succesfull and has the json string</param>
+	/// <returns></returns>
 	public static IEnumerator RequestTournaments(Action<string>callback)
 	{
 		UnityWebRequest myWww = UnityWebRequest.Get("https://api.pubg.com/tournaments");
@@ -16,13 +22,13 @@ public static class WebRequest
 
 		yield return myWww.SendWebRequest();
 
-		if (myWww.isNetworkError || myWww.isHttpError) {
+		if (myWww.isNetworkError || myWww.isHttpError) {//handle errors here
 			Debug.Log(myWww.error);
 		}
 		else
 		{
 			//Debug.Log(myWww.downloadHandler.text); 
-			callback(myWww.downloadHandler.text);
+			callback(myWww.downloadHandler.text);//callback with the json from the web request
 		}
 
 
