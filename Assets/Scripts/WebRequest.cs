@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -6,7 +7,8 @@ using UnityEngine.Networking;
 public static class WebRequest
 {
 
-	public static IEnumerator RequestTournaments()
+	public static Data Data;
+	public static IEnumerator RequestTournaments(Action<string>callback)
 	{
 		UnityWebRequest myWww = UnityWebRequest.Get("https://api.pubg.com/tournaments");
 		myWww.SetRequestHeader("accept", "application/vnd.api+json");
@@ -20,30 +22,10 @@ public static class WebRequest
 		else
 		{
 			//Debug.Log(myWww.downloadHandler.text); 
-			var N = SimpleJSON.JSON.Parse(myWww.downloadHandler.text);
-			foreach (var item in N["data"]) {
-				Debug.Log(item.Value["id"]);
-				Debug.Log(item.Value["attributes"]["createdAt"]);
-
-			}
+			callback(myWww.downloadHandler.text);
 		}
 
 
 		yield return null;
-	}
-
-	public struct Data {
-		List<TournamentData> tournamentDatas;
-	}
-
-	public struct TournamentData {
-		string type;
-		string id;
-		List<Attribute> attributes;
-	}
-
-	public struct Attribute {
-		string name;
-		string value;
 	}
 }
