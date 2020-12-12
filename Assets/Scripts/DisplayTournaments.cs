@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Manage : MonoBehaviour
+public class DisplayTournaments : MonoBehaviour
 {
+	public GameObject content;
+	public GameObject row;
 
 	public Data Data;
+
 	private void Start()
 	{
 		StartCoroutine(WebRequest.RequestTournaments(ManageData));
@@ -23,15 +26,26 @@ public class Manage : MonoBehaviour
 			tournamentData.date = item.Value["attributes"]["createdAt"];
 
 			Data.tournamentDatas.Add(tournamentData);
-
-			//Debug.Log(item.Value["id"]);
-			//Debug.Log(item.Value["attributes"]["createdAt"]);
 		}
+		InstanciateRows();
+	}
 
-		foreach (var data in Data.tournamentDatas)
+	public void InstanciateRows()
+	{
+		foreach (var tournament in Data.tournamentDatas)
 		{
-			Debug.Log($"Tournament id: {data.id} Tournament Date: {data.date} ");
+			GameObject newRow = Instantiate(row);
+			newRow.transform.SetParent(content.transform, false);
+
+			if (newRow.GetComponent<UITournamentRow>())
+			{
+				UITournamentRow tournamentRow = newRow.GetComponent<UITournamentRow>();
+				tournamentRow.SetTextID(tournament.id);
+				tournamentRow.SetTextDate(tournament.date);
+			}
+
 		}
+
 
 	}
 }
