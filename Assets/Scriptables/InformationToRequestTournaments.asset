@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707f9e27e8d0e7749bad9bc11d02eeea, type: 3}
+  m_Name: InformationToRequestTournaments
+  m_EditorClassIdentifier: 
+  uri: https://api.pubg.com/tournaments
+  headers:
+  - name: accept
+    value: application/vnd.api+json
+  - name: Authorization
+    value: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJiNTNhNjk5MC01YjUyLTAxMzktNzhhNi03ZGE4YmZmYTllYzAiLCJpc3MiOiJnYW1lbG9ja2VyIiwiaWF0IjoxNjE0NDQ4NDQ1LCJwdWIiOiJibHVlaG9sZSIsInRpdGxlIjoicHViZyIsImFwcCI6Ii02Mjk3YWU3OC02ZTU4LTQ4M2YtOWI0YS01NTA3YTU1ZWRjYzQifQ.4dDeddiz_r8sjKyH8zgd4b8PPp165KbE2QvvslPg-dc

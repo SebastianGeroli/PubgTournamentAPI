@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 76923474181195802}
   - component: {fileID: 76923474181195806}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CanvasTournamentView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,6 +115,7 @@ MonoBehaviour:
   content: {fileID: 76923476168346284}
   row: {fileID: 7761816297536046386, guid: 5769acee645b4d84c9ce4f879663b6f3, type: 3}
   Data: {fileID: 11400000, guid: 797e3273fa3aad94ca3c1b97aadb9868, type: 2}
+  requestInformation: {fileID: 11400000, guid: 06922cd0b1aa7c54cb5ab2c6a3a75d2c, type: 2}
 --- !u!1 &76923474278900142
 GameObject:
   m_ObjectHideFlags: 0
