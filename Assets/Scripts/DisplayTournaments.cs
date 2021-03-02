@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Displays Tournaments on start
 /// </summary>
-public class DisplayTournaments : MonoBehaviour
+public class DisplayTournaments : MonoBehaviour, IProcessData
 {
 
     public GameObject content;// gameobject parent where the rows will hook up
@@ -24,11 +24,11 @@ public class DisplayTournaments : MonoBehaviour
     /// Transforms the json from the tournaments api to data more easy to acces and control
     /// </summary>
     /// <param name="json">json from the api without modifications</param>
-    public void ManageData(string json)
+    public void ProcessData(string data)
     {
         Data.tournamentDatas = new List<TournamentData>();//Clean the list of tournaments if it has something
 
-        var N = SimpleJSON.JSON.Parse(json);
+        var N = SimpleJSON.JSON.Parse(data);
 
         foreach (var item in N["data"])
         {
@@ -84,7 +84,9 @@ public class DisplayTournaments : MonoBehaviour
             return;
         }
 
-        StartCoroutine(WebRequest.WebRequestGet(requestInformation.Uri, ManageData, requestInformation.Headers)); // request tournaments
+        StartCoroutine(WebRequest.WebRequestGet(requestInformation.Uri, ProcessData, requestInformation.Headers)); // request tournaments
 
     }
+
+ 
 }
